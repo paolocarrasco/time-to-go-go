@@ -1,0 +1,13 @@
+{
+  "name": "chroming",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "moment": "~2.10.6"
+  },
+  "devDependencies": {
+    "chai": "~3.3.0",
+    "mocha": "~2.3.3"
+  }
+}
