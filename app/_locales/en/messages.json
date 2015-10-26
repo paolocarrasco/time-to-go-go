@@ -4,7 +4,7 @@
     "description": "The name of the application"
   },
   "appDescription": {
-    "message": "My Chrome Extension",
+    "message": "Chrome extension to calculate estimated time of departure",
     "description": "The description of the application"
   }
 }
