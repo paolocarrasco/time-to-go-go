@@ -1,5 +1,6 @@
 'use strict';
 
+var context = window;
 var punchin;
 var lunchStart;
 var lunchEnd;
@@ -28,13 +29,14 @@ function importDependencies() {
 }
 
 function askConfirmationToRefreshPage() {
-  context.onbeforeunload = function () {
-    return 'Going to the home page?';
-  };
+  context.onbeforeunload = function() { return 'Going to the home page?'; };
 }
 
 function printEstimatedTimeOfDeparture(timeOfDeparture) {
-  $('.seccion2 tr:nth-child(2) > td:nth-child(5)').css({ color: '#c80', transition: 'all 2s ease', padding: '0.2em', 'text-align': 'center' }).text(timeOfDeparture.format('HH:mm')).append('<br><span>(estimated)</span>');
+  $('.seccion2 tr:nth-child(2) > td:nth-child(5)')
+    .css({color: '#c80', transition: 'all 2s ease', padding: '0.2em', 'text-align': 'center'})
+    .text(timeOfDeparture.format('HH:mm'))
+    .append('<br><span>(estimated)</span>');
 }
 
 function init() {
@@ -47,11 +49,14 @@ function init() {
   printEstimatedTimeOfDeparture(timeOfDeparture);
 }
 
-function Runner() {}
+function Runner(chronos) {
+  this.init = function() {
+    chronos.getTimes();
+  };
+}
 
 context.Runner = Runner;
 
 importDependencies();
 askConfirmationToRefreshPage();
 init();
-//# sourceMappingURL=calculate-time-leave.js.map

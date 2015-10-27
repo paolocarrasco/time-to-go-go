@@ -33,36 +33,37 @@ module.exports = function (grunt) {
     watch: {
       bower: {
         files: ['bower.json'],
-        tasks: ['bowerInstall']
+        tasks: ['bowerInstall'],
+      },
+      babel: {
+        files: ['<%= config.srcScript %>/{,*/}*.js'],
+        tasks: ['babel'],
       },
       js: {
-        files: ['<%= config.srcScript %>/{,*/}*.js'],
-        tasks: ['jshint', 'babel'],
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        }
+        files: ['<%= config.srcScript %>/{,*/}*.js', 'test/spec/{,*/}*.js'],
+        tasks: ['jshint', 'karma'],
       },
       gruntfile: {
-        files: ['Gruntfile.js']
+        files: ['Gruntfile.js'],
       },
       styles: {
         files: ['<%= config.app %>/styles/{,*/}*.css'],
         tasks: [],
         options: {
-          livereload: '<%= connect.options.livereload %>'
-        }
+          livereload: '<%= connect.options.livereload %>',
+        },
       },
       livereload: {
         options: {
-          livereload: '<%= connect.options.livereload %>'
+          livereload: '<%= connect.options.livereload %>',
         },
         files: [
           '<%= config.app %>/*.html',
           '<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= config.app %>/manifest.json',
-          '<%= config.app %>/_locales/{,*/}*.json'
-        ]
-      }
+          '<%= config.app %>/_locales/{,*/}*.json',
+        ],
+      },
     },
 
     // Compiles ES6 with Babel
@@ -136,15 +137,11 @@ module.exports = function (grunt) {
         'test/spec/{,*/}*.js'
       ]
     },
-    mocha: {
-      all: {
-        options: {
-          run: true,
-          urls: ['http://localhost:<%= connect.options.port %>/index.html']
-        }
+    karma: {
+      unit: {
+        configFile: 'test/karma.conf.js',
       }
     },
-
     // Automatically inject Bower components into the HTML file
     bowerInstall: {
       app: {
@@ -318,15 +315,14 @@ module.exports = function (grunt) {
     grunt.task.run([
       'jshint',
       'babel',
-      'concurrent:chrome',
-      'connect:chrome',
+      'connect:test',
       'watch'
     ]);
   });
 
   grunt.registerTask('test', [
     'connect:test',
-    'mocha'
+    'karma'
   ]);
 
   grunt.registerTask('build', [

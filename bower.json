@@ -7,7 +7,7 @@
     "moment": "~2.10.6"
   },
   "devDependencies": {
-    "chai": "~3.3.0",
-    "mocha": "~2.3.3"
+    "lodash": "~3.10.1",
+    "karma": "~0.4.6"
   }
 }
