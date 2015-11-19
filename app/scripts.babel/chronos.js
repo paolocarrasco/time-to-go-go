@@ -1,4 +1,6 @@
 (function(context) {
+  'use strict';
+  
   function Chronos() {
     var laborHours = moment.duration(8, 'hours');
 

@@ -1,4 +1,6 @@
 (function(context) {
+  'use strict';
+
   function Runner(browserHandler, chronos) {
     this.init = function() {
       browserHandler.getTimes();

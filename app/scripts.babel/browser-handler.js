@@ -1,4 +1,5 @@
 (function(context, $) {
+  'use strict';
 
   function obtainTime(index) {
     var timeInText = $('.seccion2 tr:nth-child(2) > td:nth-child(' + index + ')').text();

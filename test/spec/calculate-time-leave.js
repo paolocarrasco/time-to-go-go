@@ -1,6 +1,4 @@
 describe('Runner', function() {
-  'use strict';
-
   var runner;
   var chronos;
   var browserHandler;
