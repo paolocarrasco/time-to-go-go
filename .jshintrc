@@ -1,7 +1,6 @@
 {
   "node": true,
   "browser": true,
-  "mocha": true,
   "esnext": true,
   "module": true,
   "bitwise": true,
@@ -20,7 +19,18 @@
   "globals" : {
     "chrome": true,
     "crypto": true,
+    "moment": true,
     "_": true,
-    "expect": true
+    "jasmine": true,
+    "describe": true,
+    "beforeEach": true,
+    "afterEach": true,
+    "jQuery": true,
+    "it": true,
+    "expect": true,
+    "spyOn": true,
+    "BrowserHandler": true,
+    "Chronos": true,
+    "Runner": true
   }
 }

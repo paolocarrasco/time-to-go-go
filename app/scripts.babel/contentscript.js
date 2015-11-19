@@ -1,3 +1,6 @@
-'use strict';
-
-console.log('\'Allo \'Allo! Content script');
+(function() {
+  var chronos = new Chronos();
+  var browserHandler = new BrowserHandler();
+  var runner = new Runner(browserHandler, chronos);
+  runner.init();
+})();
