@@ -11,7 +11,7 @@ module.exports = function(config) {
       'app/bower_components/moment/moment.js',
       'app/scripts.babel/chronos.js',
       'app/scripts.babel/browser-handler.js',
-      'app/scripts.babel/calculate-time-leave.js',
+      'app/scripts.babel/runner.js',
       'test/**/*.js'
     ],
 

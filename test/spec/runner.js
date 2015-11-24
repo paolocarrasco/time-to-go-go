@@ -3,11 +3,18 @@ describe('Runner', function() {
   var chronos;
   var browserHandler;
   var expectedTimeOfDeparture;
+  var expectedTimes;
+
+  beforeAll(function() {
+    browserHandler = { getTimes: _.noop, printEstimatedTimeOfDeparture: _.noop };
+  });
 
   beforeEach(function() {
     expectedTimeOfDeparture = '7:33pm';
+    expectedTimes = { punchin: '7:30', lunchStart: '12:00', lunchEnd: '13:15' };
     chronos = { calculateTimeOfDeparture: _.noop };
-    browserHandler = jasmine.createSpyObj('browserHandler', ['getTimes', 'printTime']);
+    spyOn(browserHandler, 'getTimes').and.returnValue(expectedTimes);
+    spyOn(browserHandler, 'printEstimatedTimeOfDeparture');
     spyOn(chronos, 'calculateTimeOfDeparture').and.returnValue(expectedTimeOfDeparture);
     runner = new Runner(browserHandler, chronos);
   });
@@ -22,11 +29,11 @@ describe('Runner', function() {
     });
 
     it('should calculate the time of departure', function() {
-      expect(chronos.calculateTimeOfDeparture).toHaveBeenCalled();
+      expect(chronos.calculateTimeOfDeparture).toHaveBeenCalledWith(expectedTimes);
     });
 
     it('should print the time of departure', function() {
-      expect(browserHandler.printTime).toHaveBeenCalledWith(expectedTimeOfDeparture);
+      expect(browserHandler.printEstimatedTimeOfDeparture).toHaveBeenCalledWith(expectedTimeOfDeparture);
     });
   });
 });
