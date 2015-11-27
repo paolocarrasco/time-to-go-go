@@ -17,10 +17,14 @@
     };
 
     this.printEstimatedTimeOfDeparture = function(timeOfDeparture) {
-      $('.seccion2 tr:nth-child(2) > td:nth-child(5)')
-        .css({color: '#c80', transition: 'all 2s ease', padding: '0.2em', 'text-align': 'center'})
-        .text(timeOfDeparture.format('HH:mm'))
-        .append('<br><span>(estimated)</span>');
+      var cellToPrint = $('.seccion2 tr:nth-child(2) > td:nth-child(5)');
+
+      if(cellToPrint.text().trim().length === 0) {
+        cellToPrint
+          .css({color: '#c80', transition: 'all 2s ease', padding: '0.2em', 'text-align': 'center'})
+          .text(timeOfDeparture.format('HH:mm'))
+          .append('<br><span>(estimated)</span>');
+      }
     };
   }
 

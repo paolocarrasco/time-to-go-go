@@ -27,22 +27,39 @@ describe('BrowserHandler', function() {
 
   describe('#printEstimatedTimeOfDeparture', function() {
     var cellForTimeOfDeparture;
+    var expectedTimeOfDeparture = '17:15';
 
-    beforeEach(function() {
-      cellForTimeOfDeparture = jQuery('.seccion2 tr:nth-child(2) > td:nth-child(5)');
-      browserHandler.printEstimatedTimeOfDeparture(moment('17:15', 'HH:mm'));
+    describe('when the departure time is printed', function() {
+      var currentTimeOfDeparture = '18:15';
+
+      beforeEach(function() {
+        cellForTimeOfDeparture = jQuery('.seccion2 tr:nth-child(2) > td:nth-child(5)');
+        cellForTimeOfDeparture.text(currentTimeOfDeparture);
+        browserHandler.printEstimatedTimeOfDeparture(moment(expectedTimeOfDeparture, 'HH:mm'));
+      });
+
+      it('should keep the departure time', function() {
+        expect(cellForTimeOfDeparture.text()).toContain(currentTimeOfDeparture);
+      });
     });
 
-    it('should print the time in the fifth cell of the recent row in the timesheet', function() {
-      expect(cellForTimeOfDeparture.text()).toContain('17:15');
-    });
+    describe('when the departure time is not printed', function() {
+      beforeEach(function() {
+        cellForTimeOfDeparture = jQuery('.seccion2 tr:nth-child(2) > td:nth-child(5)');
+        browserHandler.printEstimatedTimeOfDeparture(moment(expectedTimeOfDeparture, 'HH:mm'));
+      });
 
-    it('should warn that is estimated in the fifth cell of the recent row', function() {
-      expect(cellForTimeOfDeparture.find('span').text()).toBe('(estimated)');
-    });
+      it('should print the time in the fifth cell of the recent row in the timesheet', function() {
+        expect(cellForTimeOfDeparture.text()).toContain(expectedTimeOfDeparture);
+      });
 
-    it('should center the cell', function() {
-      expect(cellForTimeOfDeparture.css('text-align')).toBe('center');
+      it('should warn that is estimated in the fifth cell of the recent row', function() {
+        expect(cellForTimeOfDeparture.find('span').text()).toBe('(estimated)');
+      });
+
+      it('should center the cell', function() {
+        expect(cellForTimeOfDeparture.css('text-align')).toBe('center');
+      });
     });
   });
 });
