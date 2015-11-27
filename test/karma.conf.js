@@ -21,7 +21,13 @@ module.exports = function(config) {
     preprocessors: {
     },
 
-    reporters: ['progress'],
+    plugins: [
+      'karma-spec-reporter',
+      'karma-chrome-launcher',
+      'karma-jasmine'
+    ],
+
+    reporters: ['spec'],
 
     port: 9876,
 
