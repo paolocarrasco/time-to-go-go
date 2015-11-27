@@ -24,6 +24,10 @@
           .css({color: '#c80', transition: 'all 2s ease', padding: '0.2em', 'text-align': 'center'})
           .text(timeOfDeparture.format('HH:mm'))
           .append('<br><span>(estimated)</span>');
+
+        setTimeout(function () {
+          cellToPrint.text('');
+        }, 4000);
       }
     };
   }
