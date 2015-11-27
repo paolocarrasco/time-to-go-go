@@ -9,4 +9,6 @@ test/bower_components
 package
 app/scripts/*.js
 app/scripts/*.map
+*.pem
+*.crx
 
