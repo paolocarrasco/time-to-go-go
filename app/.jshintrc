@@ -1,6 +1,8 @@
 {
-  "node": true,
+  "browser": true,
+  "jquery": true,
   "esnext": true,
+  "devel": true,
   "module": true,
   "bitwise": true,
   "camelcase": true,
@@ -19,6 +21,7 @@
     "crypto": true,
     "moment": true,
     "_": true,
+    "WebSocket": true,
     "BrowserHandler": true,
     "Chronos": true,
     "Runner": true

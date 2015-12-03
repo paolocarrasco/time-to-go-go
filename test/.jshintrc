@@ -1,6 +1,9 @@
 {
   "node": true,
+  "browser": true,
   "esnext": true,
+  "jquery": true,
+  "jasmine": true,
   "module": true,
   "bitwise": true,
   "camelcase": true,
